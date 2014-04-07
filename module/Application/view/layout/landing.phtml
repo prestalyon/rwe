@@ -17,7 +17,6 @@
         <?php echo $this->headScript() ?>
     </head>
     <body>
-        <!-- HEADING -->
         <div class="nav-bar">
             <div class="nav-wrap">
                 <div class="navbar" role="navigation">
@@ -61,21 +60,18 @@
                 </div>
             </div>
         </div>
-
-        <div class="subwrap" data-stellar-background-ratio="0.2">
-            <img src="<?php echo $this->basePath(); ?>/img/logo.png" alt="logo" class="center-block" height="200"/>
+        <div class="landing" data-stellar-background-ratio="0.2">
+            <img src="<?php echo $this->basePath(); ?>/img/logo.png" alt="logo" class="center-block"/>
         </div>
         <div class="log-in">
             <div class="container">
                 <a>Register</a> | <a>Log In</a>
             </div>
         </div>
-        
-        <div class="body-content">
-            <?php echo $this->content; ?>
-        </div>
-        
-        <div class="footer"  data-stellar-background-ratio="0.2">
+
+        <?php echo $this->content; ?>
+
+        <div class="footer" data-stellar-background-ratio="0.2">
             <div class="container">
                 <hr />
                 <p>

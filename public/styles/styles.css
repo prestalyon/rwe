@@ -1,79 +1,188 @@
-/*Pallete
- grey= #b9b9b9
- maroon= #b46c6f
- orange= #eb9600
- red= #c84e3e
- blue= #38617b
- yellow= #ffeab2;
- white= #ffffff
- */
+/*
+* PALLETTE
+*
+* Blue= #69d2e7
+*
+* Light- Blue= #a7dbd8
+*
+* Grey= #e0e4cc
+*
+* Light-Orange= #f38630
+*
+* Orange= #fa6900
+*
+* White = #FFFFFF
+*
+* Black = #444349
+*/
 
 body {
-	padding-top: 50px;
-	padding-bottom: 20px;
-	background-image: url(../img/bodybg.png);
+    background-color: #FFFFFF;
+    font-family: "Trebuchet MS";
+    font-weight: lighter;
+    min-width: 850px;
 }
-
+h2 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 20px;
+}
+li {
+    border-right: solid #eaeaea 1px;
+}
+.log-in a {
+    display: inline-block;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+a:hover {
+    display: inline-block;
+    text-decoration: none;
+}
+li > a {
+    color: #444349;
+}
 .body-content {
-	padding-left: 15px;
-	padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top:20px;
+    padding-bottom: 100px;
 }
 
+.footer {
+    position: relative;
+    color: #FFFFFF;
+    height: 200px;
+    width: 100%;
+    font-size: small;
+    text-align: left;
+    background-image: url(../img/stardust.png);
+}
 /*:::::::::::::::::::::::::::::::::: NAVIGATION ::::::::::::::::::::::::::::::::::::::*/
-.logo {
-	position: absolute;
-	top: 0;
-	background-image: url(../img/banner.png);
-	height: 150px;
-	width: 120px;
-}
-.navbar {
-	background-color: #38617b;
-}
-li:hover {
-	background-color: #38617b;
-}
-.nav > li > a {
-	color: #FFFFFF;
-	font-size: large;
-}
-.navwrap {
-	background-color: #38617b;
-	height: 4px;
-}
-.navbar-right {
-	margin-top: 10px;
-	float: right;
-}
-.navbar-right > li {
-	display: inline;
-	font-size: large;
-}
-.navbar-right > li:hover {
-	background-color: #38617b;
-}
-.navbar-right > li > a {
-	color: #FFFFFF;
-	text-decoration: none;
-}
-.navbar-right > li > a:hover {
-	color: #FFFFFF;
-	text-decoration: none;
+.nav-bar {
+    width: 100%;
+    position: fixed;
+    background-color: #FFFFFF;
+    height: 65px;
+    border-top: #444349 5px solid;
+    border-left: #444349 5px solid;
+    z-index: 9999;
 }
 
+.nav-wrap {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 65px;
+    z-index: 9999;
+}
+
+.nav-logo {
+    background-color: #444349;
+    background-repeat: no-repeat;
+    font-size: larger;
+    height: 65px;
+    width: 90px;
+    margin-top: -1px;
+    margin-left: -6px;
+    padding-top: 15px;
+}
+
+.navbar-toggle {
+    background-color: #444349;
+    margin-top: 10px;
+}
+.nav {
+    padding-top: 5px;
+    font-size: large;
+}
+.navbar-collapse {
+    margin-left: -8px;
+    background-color: #FFFFFF;
+    border-left: #444349 5px solid;
+}
 /*:::::::::::::::::::::::::::::::::: /NAVIGATION ::::::::::::::::::::::::::::::::::::::*/
 
 /*:::::::::::::::::::::::::::::::::: SUB ::::::::::::::::::::::::::::::::::::::*/
 
 .subwrap {
-	height: 250px;
-	background-image: url(../img/navcover.png);
+    padding-top: 100px;
+    height: 350px;
+    background-image: url(../img/stardust.png);
 }
 .sub {
-	height: 200px;
+    height: 300px;
+}
+.log-in {
+    width: 120%;
+    height: 50px;
+    margin-left: -20%;
+    text-align: right;
+    font-size: larger;
+    padding-top: 10px;
+    background-color: #444349;
+    box-shadow: 5px 5px 5px 5px;
 }
 
 /*:::::::::::::::::::::::::::::::::: /SUB ::::::::::::::::::::::::::::::::::::::*/
+
+/*:::::::::::::::::::::::::::::::::: SLIDE::::::::::::::::::::::::::::::::::::::*/
+
+.slide {
+    min-height: 350px;
+    width: 100%;
+    background-image: url(../img/paper.png);
+}
+
+.slide-alt {
+    min-height: 800px;
+    width: 100%;
+    background-color: #7BCED7;
+    background-image: url(../img/tweed.png);
+}
+
+.slide-small {
+    min-height: 200px;
+    width: 100%;
+    background-image: url(../img/writing.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.slide-small-alt {
+    min-height: 200px;
+    width: 100%;
+    background-image: url(../img/compass.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.slidewrap {
+    text-align:justify;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+
+    font-size: large;
+}
+
+.landing {
+    top: 0;
+    min-height: 700px;
+    width: 100%;
+    padding-top: 200px;
+    background-color: #D87575;
+    background-image: url(../img/stardust.png);
+}
+.avatar {
+    padding: 15px;
+    height: 250px;
+    margin-bottom: 20px;
+    z-index: -9;
+}
+/*:::::::::::::::::::::::::::::::::: /SLIDE::::::::::::::::::::::::::::::::::::::*/
+
+/*:::::::::::::::::::::::::::::::::: Landing ::::::::::::::::::::::::::::::::::::::*/
+
+/*:::::::::::::::::::::::::::::::::: /Landing ::::::::::::::::::::::::::::::::::::::*/
 
 /*:::::::::::::::::::::::::::::::::: Profile ::::::::::::::::::::::::::::::::::::::*/
 
@@ -82,9 +191,9 @@ li:hover {
 /*:::::::::::::::::::::::::::::::::: Creator ::::::::::::::::::::::::::::::::::::::*/
 
 .creator {
-	height: 800px;
-	width: 100%;
-	background-color: #3071A9;
+    height: 800px;
+    width: 100%;
+    background-image: url(../img/tweed.png);
 }
 
 /*:::::::::::::::::::::::::::::::::: /Creator ::::::::::::::::::::::::::::::::::::::*/

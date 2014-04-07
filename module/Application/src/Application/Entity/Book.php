@@ -275,4 +275,8 @@ class Book
     {
         return $this->creator;
     }
+    
+    public function getId() {
+        return $this->getBookNo();
+    }
 }

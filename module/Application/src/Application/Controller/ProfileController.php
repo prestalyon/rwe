@@ -16,6 +16,8 @@ class ProfileController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        $user = $em->getRepository('Application\Entity\User')->findOneByUsername($this->params('id'));
+        return new ViewModel(array('user'=>$user));
     }
 }

@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Search our Database for your favourite adventure.</h2>
+    <div class="row">
+        <div class="col-sm-2">
+            <h2> Tags </h2>
+            <p>
+                Place all tags in here.
+            </p>
+        </div>
+        <div class="col-sm-10">
+            <?php foreach($books as $book): ?>
+            <h3><?php echo $book->getTitle(); ?>, <small>by <?php echo $book->getCreator()->getUsername(); ?></small></h3>
+            <p>
+                <?php echo $book->getDescription(); ?>
+            </p>
+            <a href="<?php echo $this->url('application/default',array('controller'=>'book','action'=>'read','id'=>$book->getId())); ?>" class="btn btn-default btn-sm">Read more...</a>
+            <hr/>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
