@@ -37,15 +37,17 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active">
-                                    <a href="profile.html">Profile</a>
-                                </li>
                                 <li>
                                     <a href="<?php echo $this->url('application/default', array('controller' => 'book')); ?>">Library</a>
                                 </li>
                                 <li>
-                                    <a href="creator.html">Creator</a>
+                                    <a href="<?php echo $this->url('application/default', array('controller' => 'profile')); ?>">Community</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo $this->url('application/default', array('controller' => 'book', 'action' => 'create')); ?>">Creator</a>
+                                </li>
+                            </ul>
+                            <!--<ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -54,7 +56,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                     </div>
                 </div>

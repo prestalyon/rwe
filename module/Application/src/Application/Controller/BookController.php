@@ -19,4 +19,8 @@ class BookController extends AbstractActionController
         $book = $em->getRepository('Application\Entity\Book')->findOneByBookNo($this->params('id'));
         return new ViewModel(array('book' => $book));
     }
+    
+    public function createAction() {
+        return new ViewModel();
+    }
 }

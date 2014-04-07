@@ -1,2 +1,2 @@
-<h1><?php echo $this->book->getTitle(); ?>, <small>by <a href="<?php echo $this->url('application/default', array('controller'=>'profile','id'=>$this->book->getCreator()->getUsername())); ?>"><?php echo $this->book->getCreator()->getUsername(); ?></a></small></h1>
+<h1><?php echo $this->book->getTitle(); ?>, <small>by <a href="<?php echo $this->url('application/default', array('controller'=>'profile', 'action' => 'show','id'=>$this->book->getCreator()->getUsername())); ?>"><?php echo $this->book->getCreator()->getUsername(); ?></a></small></h1>
 <div class="jumbotron"><?php echo $this->book->getDescription(); ?></div>

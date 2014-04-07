@@ -1,15 +1,13 @@
 <div class="container">
-    <h2>Search our Database for your favourite adventure.</h2>
+    <h2>Browse our library to find your perfect book.</h2>
     <div class="row">
         <div class="col-sm-2">
             <h2> Tags </h2>
-            <p>
-                Place all tags in here.
-            </p>
+            <p class="alert alert-danger">Sorry, this feature is not yet available.</p>
         </div>
         <div class="col-sm-10">
             <?php foreach($books as $book): ?>
-            <h3><?php echo $book->getTitle(); ?>, <small>by <?php echo $book->getCreator()->getUsername(); ?></small></h3>
+            <h3><?php echo $book->getTitle(); ?>, <small>by <a href="<?php echo $this->url('application/default', array('controller'=>'profile', 'action' => 'show','id'=>$book->getCreator()->getUsername())); ?>"><?php echo $book->getCreator()->getUsername(); ?></a></small></h3>
             <p>
                 <?php echo $book->getDescription(); ?>
             </p>
