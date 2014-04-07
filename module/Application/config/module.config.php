@@ -8,6 +8,30 @@
  */
 
 return array(
+    'doctrine' => array(
+        'driver' => array(
+            'application_entities' => array(
+                'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Application/Entity')
+            ),
+            'zfcuser_entity' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'paths' => __DIR__ . '/../src/Application/Entity',
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'Application\Entity' => 'application_entities'
+                )
+            ),
+        )
+    ),
+    'zfcuser' => array(
+        // telling ZfcUser to use our own class
+        'user_entity_class'       => 'Application\Entity\User',
+        // telling ZfcUserDoctrineORM to skip the entities it defines
+        'enable_default_entities' => false,
+    ),
     'router' => array(
         'routes' => array(
             'home' => array(

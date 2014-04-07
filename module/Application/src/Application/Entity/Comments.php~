@@ -1,0 +1,59 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comments
+ *
+ * @ORM\Table(name="comments", uniqueConstraints={@ORM\UniqueConstraint(name="comment_no_UNIQUE", columns={"comment_no"})}, indexes={@ORM\Index(name="fk_comments_book1_idx", columns={"book_no"}), @ORM\Index(name="fk_comments_user1_idx", columns={"user"})})
+ * @ORM\Entity
+ */
+class Comments
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="comment_no", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $commentNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=120, nullable=false)
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="stars", type="integer", nullable=false)
+     */
+    private $stars;
+
+    /**
+     * @var \Application\Entity\Book
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Book")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="book_no", referencedColumnName="book_no")
+     * })
+     */
+    private $bookNo;
+
+    /**
+     * @var \Application\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user", referencedColumnName="username")
+     * })
+     */
+    private $user;
+
+
+}

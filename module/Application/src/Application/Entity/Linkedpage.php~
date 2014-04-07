@@ -1,0 +1,41 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Linkedpage
+ *
+ * @ORM\Table(name="LinkedPage")
+ * @ORM\Entity
+ */
+class Linkedpage
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sourcePage", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $sourcepage;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="destinationPage", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $destinationpage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valueURL", type="string", length=45, nullable=true)
+     */
+    private $valueurl;
+
+
+}

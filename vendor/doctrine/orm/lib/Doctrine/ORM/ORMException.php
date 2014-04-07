@@ -100,6 +100,20 @@ class ORMException extends Exception
         return new self("Unrecognized field: $field");
     }
 
+     /**
+     *
+     * @param string $class
+     * @param string $association
+     * @param string $given
+     * @param string $expected
+     *
+     * @return \Doctrine\ORM\ORMInvalidArgumentException
+     */
+    public static function unexpectedAssociationValue($class, $association, $given, $expected)
+    {
+        return new self(sprintf('Found entity of type %s on association %s#%s, but expecting %s', $given, $class, $association, $expected));
+    }
+
     /**
      * @param string $className
      * @param string $field
@@ -250,6 +264,16 @@ class ORMException extends Exception
 
     /**
      * @param string $className
+     *
+     * @return ORMException
+     */
+    public static function invalidSecondLevelCache($className)
+    {
+        return new self(sprintf('Invalid cache class "%s". It must be a Doctrine\ORM\Cache.', $className));
+    }
+
+    /**
+     * @param string $className
      * @param string $fieldName
      *
      * @return ORMException
@@ -257,6 +281,20 @@ class ORMException extends Exception
     public static function missingIdentifierField($className, $fieldName)
     {
         return new self("The identifier $fieldName is missing for a query of " . $className);
+    }
+
+    /**
+     * @param string $className
+     * @param string $fieldName
+     *
+     * @return ORMException
+     */
+    public static function unrecognizedIdentifierFields($className, $fieldNames)
+    {
+        return new self(
+            "Unrecognized identifier fields: '" . implode("', '", $fieldNames) . "' " .
+            "are not present on class '" . $className . "'."
+        );
     }
 
     /**

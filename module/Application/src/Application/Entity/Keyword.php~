@@ -1,0 +1,44 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Keyword
+ *
+ * @ORM\Table(name="Keyword", indexes={@ORM\Index(name="fk_Keyword_book1_idx", columns={"book_no"})})
+ * @ORM\Entity
+ */
+class Keyword
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keyword", type="string", length=15, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $keyword;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="approved", type="boolean", nullable=false)
+     */
+    private $approved = '0';
+
+    /**
+     * @var \Application\Entity\Book
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Application\Entity\Book")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="book_no", referencedColumnName="book_no")
+     * })
+     */
+    private $bookNo;
+
+
+}

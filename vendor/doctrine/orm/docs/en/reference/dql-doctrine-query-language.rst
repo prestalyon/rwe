@@ -427,6 +427,8 @@ Get all users visible on a given website that have chosen certain gender:
     <?php
     $query = $em->createQuery('SELECT u FROM User u WHERE u.gender IN (SELECT IDENTITY(agl.gender) FROM Site s JOIN s.activeGenderList agl WHERE s.id = ?1)');
 
+.. versionadded:: 2.4
+
 Starting with 2.4, the IDENTITY() DQL function also works for composite primary keys:
 
 .. code-block:: php
@@ -434,6 +436,13 @@ Starting with 2.4, the IDENTITY() DQL function also works for composite primary 
     <?php
     $query = $em->createQuery('SELECT IDENTITY(c.location, 'latitude') AS latitude, IDENTITY(c.location, 'longitude') AS longitude FROM Checkpoint c WHERE c.user = ?1');
 
+Joins between entities without associations were not possible until version
+2.4, where you can generate an arbitrary join with the following syntax:
+
+.. code-block:: php
+
+    <?php
+    $query = $em->createQuery('SELECT u FROM User u JOIN Blacklist b WITH u.email = b.email');
 
 Partial Object Syntax
 ^^^^^^^^^^^^^^^^^^^^^
@@ -499,6 +508,8 @@ And then use the ``NEW`` DQL keyword :
     <?php
     $query = $em->createQuery('SELECT NEW CustomerDTO(c.name, e.email, a.city, SUM(o.value)) FROM Customer c JOIN c.email e JOIN c.address a JOIN c.orders o GROUP BY c');
     $users = $query->getResult(); // array of CustomerDTO
+
+Note that you can only pass scalar expressions to the constructor.
 
 Using INDEX BY
 ~~~~~~~~~~~~~~
@@ -920,8 +931,9 @@ the Query class. Here they are:
    result is either a plain collection of objects (pure) or an array
    where the objects are nested in the result rows (mixed).
 -  ``Query#getSingleResult()``: Retrieves a single object. If the
-   result contains more than one or no object, an exception is thrown. The
-   pure/mixed distinction does not apply.
+   result contains more than one object, an ``NonUniqueResultException``
+   is thrown. If the result contains no objects, an ``NoResultException``
+   is thrown. The pure/mixed distinction does not apply.
 -  ``Query#getOneOrNullResult()``: Retrieve a single object. If no
    object is found null will be returned.
 -  ``Query#getArrayResult()``: Retrieves an array graph (a nested
@@ -1129,7 +1141,7 @@ Scalar Hydration:
 Single Scalar Hydration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If you a query which returns just a single scalar value you can use
+If you have a query which returns just a single scalar value you can use
 single scalar hydration:
 
 .. code-block:: php
@@ -1189,7 +1201,7 @@ There are situations when a query you want to execute returns a
 very large result-set that needs to be processed. All the
 previously described hydration modes completely load a result-set
 into memory which might not be feasible with large result sets. See
-the `Batch Processing <batch-processing>`_ section on details how
+the `Batch Processing <batch-processing.html>`_ section on details how
 to iterate large result sets.
 
 Functions
@@ -1351,7 +1363,7 @@ can mark a many-to-one or one-to-one association as fetched temporarily to batch
 
     <?php
     $query = $em->createQuery("SELECT u FROM MyProject\User u");
-    $query->setFetchMode("MyProject\User", "address", "EAGER");
+    $query->setFetchMode("MyProject\User", "address", \Doctrine\ORM\Mapping\ClassMetadata::FETCH_EAGER);
     $query->execute();
 
 Given that there are 10 users and corresponding addresses in the database the executed queries will look something like:
@@ -1360,6 +1372,9 @@ Given that there are 10 users and corresponding addresses in the database the ex
 
     SELECT * FROM users;
     SELECT * FROM address WHERE id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+.. note::
+    Changing the fetch mode during a query is only possible for one-to-one and many-to-one relations.
 
 
 EBNF
@@ -1583,7 +1598,7 @@ Scalar and Type Expressions
 .. code-block:: php
 
     ScalarExpression       ::= SimpleArithmeticExpression | StringPrimary | DateTimePrimary | StateFieldPathExpression | BooleanPrimary | CaseExpression | InstanceOfExpression
-    StringExpression       ::= StringPrimary | "(" Subselect ")"
+    StringExpression       ::= StringPrimary | ResultVariable | "(" Subselect ")"
     StringPrimary          ::= StateFieldPathExpression | string | InputParameter | FunctionsReturningStrings | AggregateExpression | CaseExpression
     BooleanExpression      ::= BooleanPrimary | "(" Subselect ")"
     BooleanPrimary         ::= StateFieldPathExpression | boolean | InputParameter
@@ -1632,7 +1647,7 @@ QUANTIFIED/BETWEEN/COMPARISON/LIKE/NULL/EXISTS
     InstanceOfExpression     ::= IdentificationVariable ["NOT"] "INSTANCE" ["OF"] (InstanceOfParameter | "(" InstanceOfParameter {"," InstanceOfParameter}* ")")
     InstanceOfParameter      ::= AbstractSchemaName | InputParameter
     LikeExpression           ::= StringExpression ["NOT"] "LIKE" StringPrimary ["ESCAPE" char]
-    NullComparisonExpression ::= (SingleValuedPathExpression | InputParameter) "IS" ["NOT"] "NULL"
+    NullComparisonExpression ::= (InputParameter | NullIfExpression | CoalesceExpression | SingleValuedPathExpression | ResultVariable) "IS" ["NOT"] "NULL"
     ExistsExpression         ::= ["NOT"] "EXISTS" "(" Subselect ")"
     ComparisonOperator       ::= "=" | "<" | "<=" | "<>" | ">" | ">=" | "!="
 

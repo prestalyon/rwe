@@ -19,6 +19,8 @@
 
 namespace Doctrine\DBAL\Schema;
 
+use Doctrine\DBAL\Types\Type;
+
 /**
  * Schema manager for the MySql RDBMS.
  *
@@ -62,15 +64,17 @@ class MySqlSchemaManager extends AbstractSchemaManager
      */
     protected function _getPortableTableIndexesList($tableIndexes, $tableName=null)
     {
-        foreach($tableIndexes as $k => $v) {
+        foreach ($tableIndexes as $k => $v) {
             $v = array_change_key_case($v, CASE_LOWER);
-            if($v['key_name'] == 'PRIMARY') {
+            if ($v['key_name'] == 'PRIMARY') {
                 $v['primary'] = true;
             } else {
                 $v['primary'] = false;
             }
             if (strpos($v['index_type'], 'FULLTEXT') !== false) {
                 $v['flags'] = array('FULLTEXT');
+            } elseif (strpos($v['index_type'], 'SPATIAL') !== false) {
+                $v['flags'] = array('SPATIAL');
             }
             $tableIndexes[$k] = $v;
         }
@@ -128,6 +132,7 @@ class MySqlSchemaManager extends AbstractSchemaManager
 
         switch ($dbType) {
             case 'char':
+            case 'binary':
                 $fixed = true;
                 break;
             case 'float':
@@ -135,7 +140,7 @@ class MySqlSchemaManager extends AbstractSchemaManager
             case 'real':
             case 'numeric':
             case 'decimal':
-                if(preg_match('([A-Za-z]+\(([0-9]+)\,([0-9]+)\))', $tableColumn['type'], $match)) {
+                if (preg_match('([A-Za-z]+\(([0-9]+)\,([0-9]+)\))', $tableColumn['type'], $match)) {
                     $precision = $match[1];
                     $scale = $match[2];
                     $length = null;
@@ -167,7 +172,7 @@ class MySqlSchemaManager extends AbstractSchemaManager
             'scale'         => null,
             'precision'     => null,
             'autoincrement' => (bool) (strpos($tableColumn['extra'], 'auto_increment') !== false),
-            'comment'       => (isset($tableColumn['comment'])) ? $tableColumn['comment'] : null
+            'comment'       => isset($tableColumn['comment']) ? $tableColumn['comment'] : null,
         );
 
         if ($scale !== null && $precision !== null) {
@@ -175,7 +180,13 @@ class MySqlSchemaManager extends AbstractSchemaManager
             $options['precision'] = $precision;
         }
 
-        return new Column($tableColumn['field'], \Doctrine\DBAL\Types\Type::getType($type), $options);
+        $column = new Column($tableColumn['field'], Type::getType($type), $options);
+
+        if (isset($tableColumn['collation'])) {
+            $column->setPlatformOption('collation', $tableColumn['collation']);
+        }
+
+        return $column;
     }
 
     /**
@@ -208,7 +219,7 @@ class MySqlSchemaManager extends AbstractSchemaManager
         }
 
         $result = array();
-        foreach($list as $constraint) {
+        foreach ($list as $constraint) {
             $result[] = new ForeignKeyConstraint(
                 array_values($constraint['local']), $constraint['foreignTable'],
                 array_values($constraint['foreign']), $constraint['name'],

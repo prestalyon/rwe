@@ -1,0 +1,44 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Page
+ *
+ * @ORM\Table(name="page", indexes={@ORM\Index(name="fk_page_book1_idx", columns={"book_no"})})
+ * @ORM\Entity
+ */
+class Page
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="page_no", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $pageNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="string", length=1000, nullable=false)
+     */
+    private $text;
+
+    /**
+     * @var \Application\Entity\Book
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Application\Entity\Book")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="book_no", referencedColumnName="book_no")
+     * })
+     */
+    private $bookNo;
+
+
+}

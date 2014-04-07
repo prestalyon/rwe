@@ -1,6 +1,32 @@
 Annotations Reference
 =====================
 
+You've probably used docblock annotations in some form already,
+most likely to provide documentation metadata for a tool like
+``PHPDocumentor`` (@author, @link, ...). Docblock annotations are a
+tool to embed metadata inside the documentation section which can
+then be processed by some tool. Doctrine 2 generalizes the concept
+of docblock annotations so that they can be used for any kind of
+metadata and so that it is easy to define new docblock annotations.
+In order to allow more involved annotation values and to reduce the
+chances of clashes with other docblock annotations, the Doctrine 2
+docblock annotations feature an alternative syntax that is heavily
+inspired by the Annotation syntax introduced in Java 5.
+
+The implementation of these enhanced docblock annotations is
+located in the ``Doctrine\Common\Annotations`` namespace and
+therefore part of the Common package. Doctrine 2 docblock
+annotations support namespaces and nested annotations among other
+things. The Doctrine 2 ORM defines its own set of docblock
+annotations for supplying object-relational mapping metadata.
+
+.. note::
+
+    If you're not comfortable with the concept of docblock
+    annotations, don't worry, as mentioned earlier Doctrine 2 provides
+    XML and YAML alternatives and you could easily implement your own
+    favourite mechanism for defining ORM metadata.
+
 In this chapter a reference of every Doctrine 2 Annotation is given
 with short explanations on their context and usage.
 
@@ -9,6 +35,7 @@ Index
 
 -  :ref:`@Column <annref_column>`
 -  :ref:`@ColumnResult <annref_column_result>`
+-  :ref:`@Cache <annref_cache>`
 -  :ref:`@ChangeTrackingPolicy <annref_changetrackingpolicy>`
 -  :ref:`@DiscriminatorColumn <annref_discriminatorcolumn>`
 -  :ref:`@DiscriminatorMap <annref_discriminatormap>`
@@ -125,6 +152,17 @@ Scalar result types can be included in the query result by specifying this annot
 Required attributes:
 
 -  **name**: The name of a column in the SELECT clause of a SQL query
+
+.. _annref_cache:
+
+@Cache
+~~~~~~~~~~~~~~
+Add caching strategy to a root entity or a collection.
+
+Optional attributes:
+
+-  **usage**: One of ``READ_ONLY``, ``READ_READ_WRITE`` or ``NONSTRICT_READ_WRITE``, By default this is ``READ_ONLY``.
+-  **region**: An specific region name
 
 .. _annref_changetrackingpolicy:
 
@@ -493,7 +531,7 @@ details of the database join table. If you do not specify
 @JoinTable on these relations reasonable mapping defaults apply
 using the affected table and the column names.
 
-Required attributes:
+Optional attributes:
 
 
 -  **name**: Database name of the join-table
@@ -895,7 +933,7 @@ DocBlock.
 @SequenceGenerator
 ~~~~~~~~~~~~~~~~~~~~~
 
-For the use with @generatedValue(strategy="SEQUENCE") this
+For the use with @GeneratedValue(strategy="SEQUENCE") this
 annotation allows to specify details about the sequence, such as
 the increment size and initial values of the sequence.
 

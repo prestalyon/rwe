@@ -1,0 +1,84 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Book
+ *
+ * @ORM\Table(name="book", indexes={@ORM\Index(name="fk_book_user1_idx", columns={"creator"})})
+ * @ORM\Entity
+ */
+class Book
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="book_no", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $bookNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=60, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=200, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=3, nullable=false)
+     */
+    private $language;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_date", type="datetime", nullable=false)
+     */
+    private $createDate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="times_downloaded", type="integer", nullable=false)
+     */
+    private $timesDownloaded;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=false)
+     */
+    private $published;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="approved", type="boolean", nullable=true)
+     */
+    private $approved = '0';
+
+    /**
+     * @var \Application\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="creator", referencedColumnName="username")
+     * })
+     */
+    private $creator;
+
+
+}

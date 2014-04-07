@@ -1,0 +1,116 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Roles
+ *
+ * @ORM\Table(name="Roles")
+ * @ORM\Entity
+ */
+class Roles
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role_name", type="string", length=15, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $roleName = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="read_books", type="boolean", nullable=false)
+     */
+    private $readBooks = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="create_book", type="boolean", nullable=false)
+     */
+    private $createBook = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="delete_all_book", type="boolean", nullable=false)
+     */
+    private $deleteAllBook = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="delete_own_books", type="boolean", nullable=false)
+     */
+    private $deleteOwnBooks = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="edit_all_books", type="boolean", nullable=false)
+     */
+    private $editAllBooks = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="edit_own_books", type="boolean", nullable=false)
+     */
+    private $editOwnBooks = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="approve_book", type="boolean", nullable=false)
+     */
+    private $approveBook = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="create_keywords", type="boolean", nullable=false)
+     */
+    private $createKeywords = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="delete_keywords", type="boolean", nullable=false)
+     */
+    private $deleteKeywords = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="approve_keywords", type="boolean", nullable=false)
+     */
+    private $approveKeywords = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="delete_user", type="boolean", nullable=false)
+     */
+    private $deleteUser = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="delete_admins", type="boolean", nullable=false)
+     */
+    private $deleteAdmins = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="change_roles", type="boolean", nullable=false)
+     */
+    private $changeRoles = '0';
+
+
+}
