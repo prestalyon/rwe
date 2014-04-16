@@ -95,6 +95,7 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
+            'zfcuser_doctrine_em' => 'Doctrine\ORM\EntityManager',
         ),
     ),
     'translator' => array(
@@ -125,9 +126,15 @@ return array(
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            
+            'scn-social-auth/user/login'     => __DIR__ . '/../view/auth/login.phtml',
+            'scn-social-auth/user/register'  => __DIR__ . '/../view/auth/register.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
+        ),
+        'strategies' => array(
+            'ViewJsonStrategy',
         ),
     ),
     // Placeholder for console routes

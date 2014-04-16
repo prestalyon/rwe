@@ -65,7 +65,7 @@ $settings = array(
      *
      * Please specify if Foursquare is enabled
      */
-    //'foursquare_enabled' => true,
+    'foursquare_enabled' => true,
 
     /**
      * Github Enabled
@@ -93,7 +93,7 @@ $settings = array(
      *
      * Please specify if Google is enabled
      */
-    //'google_enabled' => true,
+    'google_enabled' => true,
 
     /**
      * Google Scope
@@ -111,14 +111,14 @@ $settings = array(
      *
      * Please specify if LinkedIn is enabled
      */
-    //'linkedIn_enabled' => true,
+    'linkedIn_enabled' => true,
 
     /**
      * Twitter Enabled
      *
      * Please specify if Twitter is enabled
      */
-    //'twitter_enabled' => true,
+    'twitter_enabled' => true,
 
     /**
      * Yahoo! Enabled

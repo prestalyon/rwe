@@ -1,9 +1,113 @@
+<?php
+$this->inlineScript()->appendFile($this->basePath() . '/scripts/sigmajs/src/sigma.core.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/conrad.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/utils/sigma.utils.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/utils/sigma.polyfills.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/sigma.settings.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/classes/sigma.classes.dispatcher.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/classes/sigma.classes.configurable.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/classes/sigma.classes.graph.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/classes/sigma.classes.camera.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/classes/sigma.classes.quad.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/captors/sigma.captors.mouse.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/captors/sigma.captors.touch.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/sigma.renderers.canvas.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/sigma.renderers.webgl.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/sigma.renderers.def.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/webgl/sigma.webgl.nodes.def.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/webgl/sigma.webgl.nodes.fast.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/webgl/sigma.webgl.edges.def.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/webgl/sigma.webgl.edges.fast.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/webgl/sigma.webgl.edges.arrow.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/canvas/sigma.canvas.labels.def.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/canvas/sigma.canvas.hovers.def.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/canvas/sigma.canvas.nodes.def.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/canvas/sigma.canvas.edges.def.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/canvas/sigma.canvas.edges.curve.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/canvas/sigma.canvas.edges.arrow.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/middlewares/sigma.middlewares.rescale.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/middlewares/sigma.middlewares.copy.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/misc/sigma.misc.animation.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/misc/sigma.misc.bindEvents.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/src/misc/sigma.misc.drawHovers.js')
+        ->appendFile($this->basePath() . '/scripts/sigmajs/plugins/sigma.parsers.json/sigma.parsers.json.js');
+?>
 <div class="body-content">
     <div class="container">
         <h2> The Creator </h2>
-        <p class="alert alert-danger">Sorry, this feature is not yet available.</p>
-        <div class="creator">
+        <p class="alert alert-danger" id="warningMessage">
+            Sorry, no changes will work, the feature has not been implemented yet.
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </p>
+        <div id="creator">
 
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Page editor</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-inline" role="form">
+                    <textarea style="width: 100%;" class="form-control">Actual page content</textarea>
+                </form>
+                <hr>
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="Fight the dragon" disabled="disabled">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="Go to the montain">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                </form>
+                <hr>
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option></option>
+                            <option>Find the dungeon</option>
+                            <option>Add a new page</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your link name">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php $this->inlineScript()->captureStart(); ?>
+var graph = new sigma('creator');
+sigma.parsers.json('<?php echo $this->basePath(); ?>/data.json', graph, function() {
+graph.settings({
+defaultNodeColor : '#ec5148',
+sideMargin : 1,
+bordersize : 1
+});
+graph.refresh();
+});
+graph.bind('clickNode',function(event){
+$('#myModal').modal('show')
+});
+$('#myModal').on('hidden.bs.modal', function (e) {
+//alert('Json query to get the book');
+});
+
+$('#myModal form').submit(function(event) {
+    event.preventDefault();
+});
+<?php $this->inlineScript()->captureEnd(); ?>

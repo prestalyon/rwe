@@ -7,6 +7,24 @@ use Zend\View\Model\ViewModel;
 
 class BookController extends AbstractActionController
 {
+    /**
+     *
+     * @return \Zend\View\Model\ModelInterface
+     */
+    private function getViewModel()
+    {
+        $acceptCriteria = array(
+            'Zend\View\Model\ViewModel' => array(
+                'text/html',
+            ),
+            'Zend\View\Model\JsonModel' => array(
+                'application/json',
+            )
+        );
+
+        return $this->acceptableViewModelSelector($acceptCriteria);
+    }
+    
     public function indexAction()
     {
         $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
@@ -17,7 +35,7 @@ class BookController extends AbstractActionController
     public function readAction() {
         $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         $book = $em->getRepository('Application\Entity\Book')->findOneByBookNo($this->params('id'));
-        return new ViewModel(array('book' => $book));
+        return $this->getViewModel()->setVariable('book', $book);
     }
     
     public function createAction() {

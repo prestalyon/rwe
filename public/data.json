@@ -1,0 +1,52 @@
+{
+  "nodes": [
+    {
+      "id": "n0",
+      "label": "Introduction",
+      "x": 0,
+      "y": 0,
+      "size": 1
+    },
+    {
+      "id": "n1",
+      "label": "Find the dungeon",
+      "x": 3,
+      "y": 1,
+      "size": 1
+    },
+    {
+      "id": "n2",
+      "label": "Fight the dragon",
+      "x": 1,
+      "y": 3,
+      "size": 1
+    },
+    {
+      "id": "n3",
+      "label": "Drink in the tavern",
+      "x": 3,
+      "y": 3,
+      "size": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "source": "n0",
+      "target": "n1",
+      "type": "arrow"
+    },
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n2",
+      "type": "arrow"
+    },
+    {
+      "id": "e2",
+      "source": "n1",
+      "target": "n3",
+      "type": "arrow"
+    }
+  ]
+}

@@ -1,34 +1,22 @@
 <div class="container">
+    <h2>My name is <?php echo $this->user->getUsername(); ?></h2>
     <div class="row">
         <div class="col-sm-2">
             <h2>Projects</h2>
             <p class="alert alert-danger">Sorry, this feature is not yet available.</p>
         </div>
         <div class="col-sm-8">
-            <h2>Stories / Activity</h2>
-            <p>
-                Donec id elit non mi porta gravida at eget metus.
-                Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo
-                sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-            </p>
-            <h2>Stories / Activity</h2>
-            <p>
-                Donec id elit non mi porta gravida at eget metus.
-                Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo
-                sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-            </p>
-            <h2>Stories / Activity</h2>
-            <p>
-                Donec id elit non mi porta gravida at eget metus.
-                Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo
-                sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-            </p>
+            <?php if(count($this->user->getBooks())): ?>
+                <h3>I wrote the following books:</h3>
+                <?php foreach ($this->user->getBooks() as $book): ?>
+                    <h4><?php echo $book->getTitle(); ?></h4>
+                    <p>
+                        <?php echo $book->getDescription(); ?>
+                    </p>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <h3>I haven't written any book yet.</h3>
+            <?php endif; ?>
         </div>
         <div class="col-sm-2">
             <h2>Favourited Stories</h2>

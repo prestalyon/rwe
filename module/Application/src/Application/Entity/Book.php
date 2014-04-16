@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="book", indexes={@ORM\Index(name="fk_book_user1_idx", columns={"creator"})})
  * @ORM\Entity
  */
-class Book
+class Book implements \JsonSerializable
 {
     /**
      * @var integer
@@ -80,7 +80,14 @@ class Book
      */
     private $creator;
 
-
+    /**
+     * @var 
+     *
+     * @ORM\OneToMany(targetEntity="Application\Entity\Page",mappedBy="bookNo")
+     */
+    private $pages;
+    
+    
 
     /**
      * Get bookNo
@@ -279,4 +286,13 @@ class Book
     public function getId() {
         return $this->getBookNo();
     }
+    
+    public function getPages() {
+        return $this->pages;
+    }
+
+    public function jsonSerialize() {
+        return $this->title;
+    }
+
 }

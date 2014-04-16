@@ -3,6 +3,7 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ZfcUser\Entity\User as ZfcUserEntity;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="username_UNIQUE", columns={"username"})}, indexes={@ORM\Index(name="fk_user_Roles1_idx", columns={"role_name"})})
  * @ORM\Entity
  */
-class User
+class User extends ZfcUserEntity
 {
     /**
      * @var string
@@ -19,21 +20,21 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=32, nullable=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=30, nullable=false)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var \DateTime
@@ -59,7 +60,12 @@ class User
      */
     private $roleName;
 
-
+    /**
+     * @var 
+     *
+     * @ORM\OneToMany(targetEntity="Application\Entity\Book",mappedBy="creator")
+     */
+    private $books;
 
     /**
      * Get username
@@ -184,5 +190,9 @@ class User
     public function getRoleName()
     {
         return $this->roleName;
+    }
+    
+    public function getBooks() {
+        return $this->books;
     }
 }
