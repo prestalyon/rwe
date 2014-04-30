@@ -1,128 +1,128 @@
 /*
-* PALLETTE
-*
-* Blue= #69d2e7
-*
-* Light- Blue= #a7dbd8
-*
-* Grey= #e0e4cc
-*
-* Light-Orange= #f38630
-*
-* Orange= #fa6900
-*
-* White = #FFFFFF
-*
-* Black = #444349
-*/
+ * PALLETTE
+ *
+ * Blue= #69d2e7
+ *
+ * Light- Blue= #a7dbd8
+ *
+ * Grey= #e0e4cc
+ *
+ * Light-Orange= #f38630
+ *
+ * Orange= #fa6900
+ *
+ * White = #FFFFFF
+ *
+ * Black = #444349
+ */
 
 body {
-    background-color: #FFFFFF;
-    font-family: "Trebuchet MS";
-    font-weight: lighter;
-    min-width: 850px;
+	background-color: #FFFFFF;
+	font-family: "Trebuchet MS";
+	font-weight: lighter;
+	min-width: 850px;
 }
 h2 {
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-top: 20px;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 20px;
 }
 li {
-    border-right: solid #eaeaea 1px;
+	border-right: solid #eaeaea 1px;
 }
 .log-in a {
-    display: inline-block;
-    text-decoration: none;
-    color: #FFFFFF;
+	display: inline-block;
+	text-decoration: none;
+	color: #FFFFFF;
 }
 a:hover {
-    display: inline-block;
-    text-decoration: none;
+	display: inline-block;
+	text-decoration: none;
 }
 li > a {
-    color: #444349;
+	color: #444349;
 }
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top:20px;
-    padding-bottom: 100px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 20px;
+	padding-bottom: 100px;
 }
 
 .footer {
-    position: relative;
-    color: #FFFFFF;
-    height: 200px;
-    width: 100%;
-    font-size: small;
-    text-align: left;
-    background-image: url(../img/stardust.png);
+	position: relative;
+	color: #FFFFFF;
+	height: 200px;
+	width: 100%;
+	font-size: small;
+	text-align: left;
+	background-image: url(../img/stardust.png);
 }
 /*:::::::::::::::::::::::::::::::::: NAVIGATION ::::::::::::::::::::::::::::::::::::::*/
 .nav-bar {
-    width: 100%;
-    position: fixed;
-    background-color: #FFFFFF;
-    height: 65px;
-    border-top: #444349 5px solid;
-    border-left: #444349 5px solid;
-    z-index: 9999;
+	width: 100%;
+	position: fixed;
+	background-color: #FFFFFF;
+	height: 65px;
+	border-top: #444349 5px solid;
+	border-left: #444349 5px solid;
+	z-index: 9999;
 }
 
 .nav-wrap {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 65px;
-    z-index: 9999;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 65px;
+	z-index: 9999;
 }
 
 .nav-logo {
-    background-color: #444349;
-    background-repeat: no-repeat;
-    font-size: larger;
-    height: 65px;
-    width: 90px;
-    margin-top: -1px;
-    margin-left: -6px;
-    padding-top: 15px;
+	background-color: #444349;
+	background-repeat: no-repeat;
+	font-size: larger;
+	height: 65px;
+	width: 90px;
+	margin-top: -1px;
+	margin-left: -6px;
+	padding-top: 15px;
 }
 
 .navbar-toggle {
-    background-color: #444349;
-    margin-top: 10px;
+	background-color: #444349;
+	margin-top: 10px;
 }
 .nav {
-    padding-top: 5px;
-    font-size: large;
+	padding-top: 5px;
+	font-size: large;
 }
 .navbar-collapse {
-    margin-left: -8px;
-    background-color: #FFFFFF;
-    border-left: #444349 5px solid;
+	margin-left: -8px;
+	background-color: #FFFFFF;
+	border-left: #444349 5px solid;
 }
 /*:::::::::::::::::::::::::::::::::: /NAVIGATION ::::::::::::::::::::::::::::::::::::::*/
 
 /*:::::::::::::::::::::::::::::::::: SUB ::::::::::::::::::::::::::::::::::::::*/
 
 .subwrap {
-    padding-top: 100px;
-    height: 350px;
-    background-image: url(../img/stardust.png);
+	padding-top: 100px;
+	height: 350px;
+	background-image: url(../img/stardust.png);
 }
 .sub {
-    height: 300px;
+	height: 300px;
 }
 .log-in {
-    width: 120%;
-    height: 50px;
-    margin-left: -20%;
-    text-align: right;
-    font-size: larger;
-    padding-top: 10px;
-    background-color: #444349;
-    box-shadow: 5px 5px 5px 5px;
+	width: 120%;
+	height: 50px;
+	margin-left: -20%;
+	text-align: right;
+	font-size: larger;
+	padding-top: 10px;
+	background-color: #444349;
+	box-shadow: 5px 5px 5px 5px;
 }
 
 /*:::::::::::::::::::::::::::::::::: /SUB ::::::::::::::::::::::::::::::::::::::*/
@@ -130,58 +130,77 @@ li > a {
 /*:::::::::::::::::::::::::::::::::: SLIDE::::::::::::::::::::::::::::::::::::::*/
 
 .slide {
-    min-height: 350px;
-    width: 100%;
-    background-image: url(../img/paper.png);
+	padding-top: 30px;
+	padding-bottom: 20px;
+	min-height: 320px;
+	width: 100%;
+	background-image: url(../img/paper.png);
 }
 
 .slide-alt {
-    min-height: 800px;
-    width: 100%;
-    background-color: #7BCED7;
-    background-image: url(../img/tweed.png);
+	padding-top: 30px;
+	min-height: 320px;
+	width: 100%;
+	background-color: #7BCED7;
+	background-image: url(../img/tweed.png);
 }
 
 .slide-small {
-    min-height: 200px;
-    width: 100%;
-    background-image: url(../img/writing.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
+	min-height: 200px;
+	width: 100%;
+	background-image: url(../img/writing.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 .slide-small-alt {
-    min-height: 200px;
-    width: 100%;
-    background-image: url(../img/compass.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
+	min-height: 200px;
+	width: 100%;
+	background-image: url(../img/compass.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 .slidewrap {
-    text-align:justify;
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-
-    font-size: large;
+	text-align: justify;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: large;
 }
-
+.slidewrap-alt {
+	text-align: justify;
+	color: #EEEEEE;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: large;
+}
+.avatar-wrap {
+	text-align: center;
+}
+.team-wrap {
+	text-align: center;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: large;
+}
 .landing {
-    top: 0;
-    min-height: 700px;
-    width: 100%;
-    padding-top: 200px;
-    background-color: #D87575;
-    background-image: url(../img/stardust.png);
+	top: 0;
+	min-height: 700px;
+	width: 100%;
+	padding-top: 200px;
+	background-color: #D87575;
+	background-image: url(../img/stardust.png);
 }
 .avatar {
-    padding: 15px;
-    height: 250px;
-    margin-bottom: 20px;
-    z-index: -9;
+	padding: 15px;
+	height: 250px;
+	margin-bottom: 20px;
+	z-index: -9;
 }
 /*:::::::::::::::::::::::::::::::::: /SLIDE::::::::::::::::::::::::::::::::::::::*/
 
 /*:::::::::::::::::::::::::::::::::: Landing ::::::::::::::::::::::::::::::::::::::*/
-
+.row {
+	text-align: justify;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: large;
+}
 /*:::::::::::::::::::::::::::::::::: /Landing ::::::::::::::::::::::::::::::::::::::*/
 
 /*:::::::::::::::::::::::::::::::::: Profile ::::::::::::::::::::::::::::::::::::::*/
@@ -191,40 +210,42 @@ li > a {
 /*:::::::::::::::::::::::::::::::::: Creator ::::::::::::::::::::::::::::::::::::::*/
 
 #creator {
-    height: 800px;
-    width: 100%;
-    background-image: url(../img/tweed.png);
+	height: 800px;
+	width: 100%;
+	background-image: url(../img/tweed.png);
 }
 
 /*:::::::::::::::::::::::::::::::::: /Creator ::::::::::::::::::::::::::::::::::::::*/
 
 /* Base styles (regardless of theme) */
+.modal-dialog {
+	margin-top: 150px;
+}
 .bs-callout {
-margin: 20px 0;
-padding: 15px 30px 15px 15px;
-border-left: 5px solid #eee;
+	margin: 20px 0;
+	padding: 15px 30px 15px 15px;
+	border-left: 5px solid #eee;
 }
 .bs-callout h4 {
-margin-top: 0;
+	margin-top: 0;
 }
 .bs-callout p:last-child {
-margin-bottom: 0;
+	margin-bottom: 0;
 }
-.bs-callout code,
-.bs-callout .highlight {
-background-color: #fff;
+.bs-callout code, .bs-callout .highlight {
+	background-color: #fff;
 }
 
 /* Themes for different contexts */
 .bs-callout-danger {
-background-color: #fcf2f2;
-border-color: #d9534f;
+	background-color: #fcf2f2;
+	border-color: #d9534f;
 }
 .bs-callout-warning {
-background-color: #fefbed;
-border-color: #f0ad4e;
+	background-color: #fefbed;
+	border-color: #f0ad4e;
 }
 .bs-callout-info {
-background-color: #f0f7fd;
-border-color: #5bc0de;
+	background-color: #f0f7fd;
+	border-color: #5bc0de;
 }
