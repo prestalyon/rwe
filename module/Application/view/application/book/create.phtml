@@ -36,12 +36,10 @@ $this->inlineScript()->appendFile($this->basePath() . '/scripts/sigmajs/src/sigm
 <div class="body-content">
     <div class="container">
         <h2> The Creator </h2>
-        <p class="alert alert-danger" id="warningMessage">
-            Sorry, no changes will work, the feature has not been implemented yet.
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        </p>
-        <div id="creator">
+        <div id="creatorOuter" class="well">
+            <div id="creator">
 
+            </div>
         </div>
     </div>
 </div>
@@ -94,7 +92,7 @@ $this->inlineScript()->appendFile($this->basePath() . '/scripts/sigmajs/src/sigm
 var graph = new sigma('creator');
 sigma.parsers.json('<?php echo $this->basePath(); ?>/data.json', graph, function() {
 graph.settings({
-defaultNodeColor : '#ec5148',
+defaultNodeColor : '#428bca',
 sideMargin : 1,
 bordersize : 1
 });

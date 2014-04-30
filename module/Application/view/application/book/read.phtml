@@ -1,8 +1,13 @@
 <h1><?php echo $this->book->getTitle(); ?>, <small>by <a href="<?php echo $this->url('application/default', array('controller'=>'profile', 'action' => 'show','id'=>$this->book->getCreator()->getUsername())); ?>"><?php echo $this->book->getCreator()->getUsername(); ?></a></small></h1>
-
+<div class="well text-center">
+    <a href="<?php echo $this->url('application/default',array('controller'=>'book','action'=>'ebook','id'=>$book->getId())); ?>" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-download"></span> <?php echo $this->translate('Download epub file'); ?></a>
+</div>
 <div class="bs-callout bs-callout-info">
     <?php echo $this->book->getDescription(); ?>
 </div>
 <?php foreach($this->book->getPages() as $page): ?>
-    <div class="jumbotron"><?php echo $page->getText(); ?></div>
+    <div class="jumbotron">
+        <h2><?php echo $page->getTitle(); ?></h2>
+        <?php echo $page->getText(); ?>
+    </div>
 <?php endforeach; ?>

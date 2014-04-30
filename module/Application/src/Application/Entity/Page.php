@@ -14,13 +14,25 @@ class Page
 {
     /**
      * @var integer
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     */
+    private $id;
+    
+    /**
+     * @var integer
      *
      * @ORM\Column(name="page_no", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $pageNo;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100, nullable=false)
+     */
+    private $title;
+    
     /**
      * @var string
      *
@@ -31,15 +43,12 @@ class Page
     /**
      * @var \Application\Entity\Book
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Application\Entity\Book")
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Book", inversedBy="pages")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="book_no", referencedColumnName="book_no")
      * })
      */
     private $bookNo;
-
 
 
     /**
@@ -109,5 +118,14 @@ class Page
     public function getBookNo()
     {
         return $this->bookNo;
+    }
+    
+    public function getTitle() {
+        return $this->title;
+    }
+    
+    public function setTitle($title) {
+        $this->title = $title;
+        return $this;
     }
 }

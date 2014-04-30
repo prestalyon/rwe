@@ -73,7 +73,7 @@ class Book implements \JsonSerializable
     /**
      * @var \Application\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="Application\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Application\Entity\User", inversedBy="books")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="creator", referencedColumnName="username")
      * })

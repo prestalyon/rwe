@@ -148,15 +148,15 @@ li > a {
 .slide-small {
 	min-height: 200px;
 	width: 100%;
-	background-image: url(../img/writing.png);
+	background-image: url(../img/compass.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
 
 .slide-small-alt {
-	min-height: 200px;
+	height: 20px;
 	width: 100%;
-	background-image: url(../img/compass.jpg);
+	background-image: url(../img/stardust.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -185,7 +185,7 @@ li > a {
 	width: 100%;
 	padding-top: 200px;
 	background-color: #D87575;
-	background-image: url(../img/stardust.png);
+	background-image: url(../img/writing.png);
 }
 .avatar {
 	padding: 15px;
@@ -209,12 +209,14 @@ li > a {
 
 /*:::::::::::::::::::::::::::::::::: Creator ::::::::::::::::::::::::::::::::::::::*/
 
-#creator {
-	height: 800px;
-	width: 100%;
-	background-image: url(../img/tweed.png);
+#creatorOuter {
+    margin-top: 20px;
 }
 
+#creator {
+    height: 400px;
+    width: 100%;
+}
 /*:::::::::::::::::::::::::::::::::: /Creator ::::::::::::::::::::::::::::::::::::::*/
 
 /* Base styles (regardless of theme) */
